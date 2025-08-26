@@ -3,6 +3,7 @@ import {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
+	NodeConnectionType,
 	NodeOperationError,
 } from 'n8n-workflow';
 
@@ -18,8 +19,8 @@ export class Disglow implements INodeType {
 		defaults: {
 			name: 'Disglow',
 		},
-		inputs: ['main'],
-		outputs: ['main'],
+		inputs: [NodeConnectionType.Main],
+		outputs: [NodeConnectionType.Main],
 		credentials: [
 			{
 				name: 'disglowApi',
@@ -597,7 +598,7 @@ export class Disglow implements INodeType {
 			} catch (error) {
 				if (this.continueOnFail()) {
 					returnData.push({
-						json: { error: error.message },
+						json: { error: error instanceof Error ? error.message : String(error) },
 						pairedItem: {
 							item: i,
 						},
