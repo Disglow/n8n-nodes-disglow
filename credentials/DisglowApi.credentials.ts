@@ -8,7 +8,7 @@ import {
 export class DisglowApi implements ICredentialType {
 	name = 'disglowApi';
 	displayName = 'Disglow API';
-	documentationUrl = 'https://docs.disglow.app';
+	documentationUrl = 'https://disglow.app/dashboard/api';
 	properties: INodeProperties[] = [
 		{
 			displayName: 'API Key',
