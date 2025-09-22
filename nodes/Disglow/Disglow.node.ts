@@ -27,13 +27,6 @@ export class Disglow implements INodeType {
 				required: true,
 			},
 		],
-		requestDefaults: {
-			baseURL: 'https://api.disglow.app/api/v1',
-			headers: {
-				Accept: 'application/json',
-				'Content-Type': 'application/json',
-			},
-		},
 		properties: [
 			{
 				displayName: 'Resource',
@@ -227,7 +220,7 @@ export class Disglow implements INodeType {
 					},
 				},
 				default: '',
-				placeholder: '774462399053955072',
+				placeholder: '889979478867066971',
 				description: 'Discord user ID or email',
 			},
 
@@ -461,6 +454,7 @@ export class Disglow implements INodeType {
 					if (operation === 'test') {
 						responseData = await this.helpers.httpRequestWithAuthentication.call(this, 'disglowApi', {
 							method: 'GET',
+							baseURL: 'https://api.disglow.app/api/v1',
 							url: '/test',
 						});
 					}
@@ -470,6 +464,7 @@ export class Disglow implements INodeType {
 					if (operation === 'getServers') {
 						responseData = await this.helpers.httpRequestWithAuthentication.call(this, 'disglowApi', {
 							method: 'GET',
+							baseURL: 'https://api.disglow.app/api/v1',
 							url: '/discord/servers',
 						});
 					}
@@ -478,6 +473,7 @@ export class Disglow implements INodeType {
 						const serverId = this.getNodeParameter('serverId', i) as string;
 						responseData = await this.helpers.httpRequestWithAuthentication.call(this, 'disglowApi', {
 							method: 'GET',
+							baseURL: 'https://api.disglow.app/api/v1',
 							url: `/discord/servers/${serverId}/roles`,
 						});
 					}
@@ -490,6 +486,7 @@ export class Disglow implements INodeType {
 
 						responseData = await this.helpers.httpRequestWithAuthentication.call(this, 'disglowApi', {
 							method: 'POST',
+							baseURL: 'https://api.disglow.app/api/v1',
 							url: `/discord/servers/${serverId}/invite`,
 							body: {
 								email,
@@ -503,6 +500,7 @@ export class Disglow implements INodeType {
 						const serverId = this.getNodeParameter('serverId', i) as string;
 						responseData = await this.helpers.httpRequestWithAuthentication.call(this, 'disglowApi', {
 							method: 'POST',
+							baseURL: 'https://api.disglow.app/api/v1',
 							url: '/discord/servers/validate',
 							body: {
 								server_id: serverId,
@@ -522,6 +520,7 @@ export class Disglow implements INodeType {
 
 						responseData = await this.helpers.httpRequestWithAuthentication.call(this, 'disglowApi', {
 							method: 'POST',
+							baseURL: 'https://api.disglow.app/api/v1',
 							url: `/discord/servers/${serverId}/users/${userIdentifier}/roles`,
 							body: {
 								roles: roleArray,
@@ -545,6 +544,7 @@ export class Disglow implements INodeType {
 
 						responseData = await this.helpers.httpRequestWithAuthentication.call(this, 'disglowApi', {
 							method: 'DELETE',
+							baseURL: 'https://api.disglow.app/api/v1',
 							url: `/discord/servers/${serverId}/users/${userIdentifier}/roles`,
 							body,
 						});
@@ -569,6 +569,7 @@ export class Disglow implements INodeType {
 
 						responseData = await this.helpers.httpRequestWithAuthentication.call(this, 'disglowApi', {
 							method: 'GET',
+							baseURL: 'https://api.disglow.app/api/v1',
 							url: `/logs?${params.toString()}`,
 						});
 					}
@@ -579,6 +580,7 @@ export class Disglow implements INodeType {
 						const days = this.getNodeParameter('days', i) as number;
 						responseData = await this.helpers.httpRequestWithAuthentication.call(this, 'disglowApi', {
 							method: 'GET',
+							baseURL: 'https://api.disglow.app/api/v1',
 							url: `/stats?days=${days}`,
 						});
 					}

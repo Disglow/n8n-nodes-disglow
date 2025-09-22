@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-disglow",
-  "version": "1.0.1",
+  "version": "1.0.6",
   "description": "n8n community node for Disglow API integration",
   "keywords": [
     "n8n-community-node-package",
